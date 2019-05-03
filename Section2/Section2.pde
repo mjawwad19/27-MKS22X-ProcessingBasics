@@ -17,16 +17,18 @@ void setup() {
 void gasket(int level, float v1x, float v1y, float v2x, float v2y, float v3x, float v3y) {
     //YOU WRITE THIS METHOD!
     triangle(v1x,v1y,v2x,v2y,v3x,v3y);
-    if (levels > level) {
-      if (level%2 == 0) fill(50);
-      else fill(255);
-      //v1 is left most v2 is top v3 is right most
-      if (level != levels) {
-        gasket(level+1, (v1x + v2x)/2, (v1y + v2y)/2, 
-                     v2x, v1y,
-                     v3x,v3y);
-        }
+    if (level%2 == 0) fill(50);
+    else fill(255);
+    if (level != levels) {
+     float nv1x = (v2x+v3x)/2;
+     float nv1y = (v2y-v3y)/2;
+     float nv2x = (v2x-v3x)/2;
+     float nv2y = (v2y-v3y)/2;
+     float nv3x = v3x;
+     float nv3y = v1y;
+     triangle(nv1x,nv1y,nv2x,nv2y,nv3x,nv3y);
     }
+                  
 }
 
 void draw() { 
