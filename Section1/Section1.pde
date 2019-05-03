@@ -18,7 +18,7 @@
       speeds = new float[many];
       for (int i = 0; i < values.length; i++) {
         values[i] = random(-99, 99);
-        speeds[i] = random(2);
+        speeds[i] = random(2); //random(7);
       }
     }
 
@@ -34,10 +34,11 @@
       //the line is the 0 y-value, the top is 100, the bottom is -100
       line(x, y+100, x+400, y+100);
       for (int i = 0; i < values.length; i++){
-        if (values[i] < 0) 
-          fill(0,255,0);
-        if (values[i] > 0) 
-          fill(255,0,0);
+        if (values[i] >= -100 && values[i] <= -50) fill(0,255,0); //green
+        else if (values[i] > -50 && values[i] < 0) fill(255,255, 0); //yellow
+        else if (values[i] > 0 && values[i] < 50) fill(255,165,0); //orange
+        else fill(255,0,0); //red
+        //reverse order because its height from the top left*
         rect(x+i*400/many,120, 400/many, values[i]); 
       }
       //You need to use a loop. You need to make the HEIGHT of the bars 
