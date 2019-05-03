@@ -3,7 +3,7 @@ color bg,fg;
 
 void setup() {
   size(800, 600);
-  levels = 1;
+  levels = 0;
 }
 
 /*Create Sierpiski's Gasket (google an image of this)
@@ -16,23 +16,18 @@ void setup() {
 */
 void gasket(int level, float v1x, float v1y, float v2x, float v2y, float v3x, float v3y) {
     //YOU WRITE THIS METHOD!
-    if (level == 0)
+    if (level == 0) {
+      fill(255);
       triangle(v1x,v1y,v2x,v2y,v3x,v3y);
-      fill(50);
-    if (level != levels) {
-     float nv1x = (v2x+v3x)/2;
-     float nv1y = (v1y-v3y)/2;
-     float nv2x = (v1x+v3x)/2;
-     float nv2y = (v2y-v3y)/2;
-     float nv3x = v3x;
-     float nv3y = v1y;
-     triangle(nv1x,nv1y,nv2x,nv2y,nv3x,nv3y);
-     level++;
-     gasket(level, v1x, v1y, nv3x, nv3y, nv2x, nv2y);
-     gasket(level, nv3x, nv3y, v2x, v2y, nv1x, nv1x);
-     gasket(level, nv2x, nv2y, nv1x, nv1y, v3x, v3y);
     }
-                  
+    level--;
+    gasket(level, v1x,v1y, mP(v1x,v2x), mP(v1y,v2y), mP(v1x,v3x), mP(v1y,v3y));
+    gasket(level, v2x, v2y, mP(v2x, v1x), mP(v2y, v1y), mP(v2x, v3x), mP(v2y, v3y));
+    gasket(level, v3x, v3y, mP(v3x, v1x), mP(v3y, v1y), mP(v3x, v2x), mP(v3y, v2y));
+}
+    
+float mP(float a, float b) {
+  return (a+b)/2.0;
 }
 
 void draw() { 
