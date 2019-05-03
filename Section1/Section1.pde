@@ -38,7 +38,7 @@
           fill(0,255,0);
         if (values[i] > 0) 
           fill(255,0,0);
- 
+        rect(x+i*400/many,120, 400/many, values[i]); 
       }
       //You need to use a loop. You need to make the HEIGHT of the bars 
       //the values in the array.
@@ -68,7 +68,7 @@
       }
     }
   }
-  }
+ 
   
   void setup() {
     size(600, 500);
