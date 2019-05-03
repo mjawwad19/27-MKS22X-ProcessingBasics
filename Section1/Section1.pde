@@ -10,7 +10,7 @@
     float x, y;
     float [] values;
     float [] speeds;
-    int many = 10;
+    int many = (int) random(10, 40) ;
     Visualizer(float x, float y) {
       this.x = x;
       this.y = y;
