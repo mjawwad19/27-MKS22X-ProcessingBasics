@@ -32,21 +32,13 @@ float mP(float a, float b) {
   return (a+b)/2.0;
 }
 
-void auto() {
-  for (int i = 0; i < 25; i++) {
-    gasket(levels,0, height-10, width, height-10, width/2, 10);
-    levels++;
-  }
-}
-
 void draw() { 
   background(50);  
   
   fill(255);
   text("Click the mouse to increase levels, press a key to decrease levels",20,20);
 
-  //gasket(levels,0, height-10, width, height-10, width/2, 10);
-  auto();
+  gasket(levels,0, height-10, width, height-10, width/2, 10);
 
  //koch(levels,width-10, height/2,10, height/3 ); 
  //other fractal you can do! This requires a bit more math, or you can look up the coordinates.
